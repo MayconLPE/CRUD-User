@@ -9,7 +9,7 @@ namespace CRUD_User.Controllers
     {
         private static List<Usuario> Usuarios() {
             return new List<Usuario>{
-                new Usuario{ Nome = "Maycon", Id = 1,}
+                new Usuario{ Nome = "Maycon", Id = 1, DataNascimento = new DateTime(1992, 06, 13)}
             };
         }
 
@@ -17,6 +17,14 @@ namespace CRUD_User.Controllers
         public IActionResult Get()
         {
             return Ok(Usuarios());
+        }
+
+        [HttpPost]
+        public IActionResult Post(Usuario usuario)
+        {
+            var usuarios = Usuarios();
+            usuarios.Add(usuario);
+            return Ok(usuarios);
         }
 
    
